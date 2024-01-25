@@ -38,7 +38,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link  @if(Request::segment(2)=='category') @else collapsed @endif" href="{{ url('admin/category/list') }}">
           <i class="bi bi-envelope"></i>
           <span>Category List</span>
         </a>

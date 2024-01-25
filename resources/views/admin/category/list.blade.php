@@ -3,11 +3,11 @@
 @section('content')
 
     <div class="pagetitle">
-      <h1>Annual Maintenance Contract (AMC)</h1>
+      <h1>Category List</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ url('') }}">Dashboard</a></li>
-          <li class="breadcrumb-item active">AMC</li>
+          <li class="breadcrumb-item active">Category</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -18,16 +18,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="{{ url('admin/amc/add') }}" class="btn btn-primary">Add New AMC</a>
+                            <a href="{{ url('admin/category/add') }}" class="btn btn-primary">Add Category</a>
                         </h5>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Amount</th>
-                                    <th>Business Category</th>
-                                    <th>Series</th>
+                                    <th>Category Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -37,15 +34,10 @@
 
                                 <tr>
                                    <td>{{ $value->id }}</td>
-                                   <td>{{ $value->name }}</td>
-                                   <td>{{ number_format($value->amount,2) }} </td>
-                                   <td>{{ !empty($value->business_category) ? 'Non Business' : 'Business' }}</td>
-                                   <td>{{ $value->series }}</td>
+                                   <td>{{ $value->category_name }}</td>
                                    <td>
-                                    <a href="{{ url('admin/amc/free_services/'.$value->id) }}" class="btn btn-warning">Free Service</a>
-                                    <a href="{{ url('admin/amc/add_ons/'.$value->id) }}" class="btn btn-warning">Add-ons</a>
-                                    <a href="{{ url('admin/amc/edit/'.$value->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                                    <a onclick="return confirm('Are You Sure Want To Delete?')" href="{{ url('admin/amc/delete/'.$value->id) }}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                    <a href="{{ url('admin/category/edit/'.$value->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                    <a onclick="return confirm('Are You Sure Want To Delete?')" href="{{ url('admin/category/delete/'.$value->id) }}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
 
                                    </td>
                                 </tr>
@@ -58,6 +50,7 @@
 
                         </table>
                         {{ $getRecord->links() }}
+                       
                     </div>
 
                 </div>
