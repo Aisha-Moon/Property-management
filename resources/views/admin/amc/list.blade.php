@@ -42,7 +42,7 @@
                                    <td>{{ !empty($value->business_category) ? 'Non Business' : 'Business' }}</td>
                                    <td>{{ $value->series }}</td>
                                    <td>
-                                    <a href="{{ url('admin/amc/free_services/'.$value->id) }}" class="btn btn-warning">Free Service</a>
+                                    <a href="{{ url('admin/amc/free_services/'.$value->id) }}" class="btn btn-primary">Free Service</a>
                                     <a href="{{ url('admin/amc/add_ons/'.$value->id) }}" class="btn btn-warning">Add-ons</a>
                                     <a href="{{ url('admin/amc/edit/'.$value->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                                     <a onclick="return confirm('Are You Sure Want To Delete?')" href="{{ url('admin/amc/delete/'.$value->id) }}" class="btn btn-danger"><i class="bi bi-trash"></i></a>

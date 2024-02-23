@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="{{ url('user/dashboard') }}" @if(Request::segment(2)=='dashboard') @else collapsed @endif">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -12,7 +12,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="{{ url('user/book_service/add') }}" @if(Request::segment(2)=='book_service') @else collapsed @endif">
           <i class="bi bi-person"></i>
           <span>Book a Service</span>
         </a>

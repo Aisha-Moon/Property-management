@@ -6,7 +6,7 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item active">AMC</li>
+                <li class="breadcrumb-item active">CATEGORY</li>
             </ol>
         </nav>
     </div>
@@ -26,7 +26,7 @@
                                     <span style="color:red;">{{ $errors->first('category_name') }}</span>
                                 </div>
                              </div>
-                            
+
                              <div class="row mb-3">
                                 <label for="" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">

@@ -22,4 +22,11 @@ class AMCList extends Model
     static public function get_single($id){
         return self::find($id);
     }
+
+    static public function get_record_delete(){
+        return self::where('is_delete',0)->get();
+    }
+    public function option(){
+        return $this->hasMany(AmcFreeService::class,'amc_id');
+    }
 }

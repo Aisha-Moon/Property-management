@@ -11,10 +11,16 @@ class Category extends Model
     protected $table="categories";
     static public function get_record($request){
 
-        $return=self::select('categories.*')
+       $return=self::select('categories.*')
                 ->orderBy('id','desc')
                 ->where('is_delete',0);
                $return=$return->paginate(2);
           return $return;
     }
+
+    static public function get_record_delete(){
+        return self::where('is_delete',0)->get();
+    }
+
+
 }

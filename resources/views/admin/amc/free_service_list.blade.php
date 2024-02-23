@@ -27,7 +27,8 @@
                                     <th>Name</th>
                                     <th>Limits</th>
                                     <th>Price</th>
-                                 
+                                    <th>Action</th>
+
                                 </tr>
                             </thead>
                           <tbody>
@@ -37,6 +38,11 @@
                                 <td>{{ $value->name }}</td>
                                 <td>{{ $value->limits }}</td>
                                 <td>{{ $value->price }}</td>
+                                <td>
+                                    <a href="{{ url('admin/amc/edit_free_service/'.$value->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="{{ url('admin/amc/delete_free_service/'.$value->id) }}" onclick="return confirm('Are you sure want to delete')"
+                                         class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                </td>
                             </tr>
                             @empty
                             <tr>
