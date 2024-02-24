@@ -14,10 +14,11 @@
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
+            @include('layouts._message')
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">ADD Book Service</h5>
-                    <form action="{{ url('admin/book_service/add') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('user/book_service/add') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                          <div class="row mb-3">
                             <label for="" class="col-sm-2 col-form-label">Service Type <span class="text-danger">*</span></label>
@@ -31,10 +32,10 @@
                                 <span style="color:red;">{{ $errors->first('service_type_id') }}</span>
                             </div>
                          </div>
-                         <div class="row mb-3">
+                         <div class="row mb-3" id="hideDivCategory">
                             <label for="" class="col-sm-2 col-form-label">Category <span class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <select name="category_id" required id="category" class="form-control">
+                                <select name="category_id"  id="category" class="form-control">
                                     <option value="">Select Category </option>
                                     @foreach ($getCategory as $value)
                                     <option {{ old('category_id')==$value->id ? 'selected' : '' }} value="{{ $value->id }}">{{ $value->category_name }}</option>
@@ -43,15 +44,15 @@
                                 <span style="color:red;">{{ $errors->first('category_id') }}</span>
                             </div>
                          </div>
-                         <div class="row mb-3">
+                         <div class="row mb-3" id="hideDivSubcategory">
                             <label for="" class="col-sm-2 col-form-label">SubCategory <span class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <select name="sub_category_id" required id="subcategory" class="form-control">
+                                <select name="sub_category_id"  id="subcategory" class="form-control">
                                 </select>
                                 <span style="color:red;">{{ $errors->first('sub_category_id') }}</span>
                             </div>
                          </div>
-                         <div class="row mb-3">
+                         <div class="row mb-3" id="showDivAmcFreeService">
                             <label for="" class="col-sm-2 col-form-label">AMC Free Service <span class="text-danger">*</span></label>
                             <div class="col-sm-10">
                                 <select name="amc_free_service_id" required class="form-control">
@@ -79,12 +80,12 @@
                             </div>
                          </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Sppecial Instruction<span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-2 col-form-label">Special Instruction<span class="text-danger">*</span></label>
                             <div class="col-sm-10">
-                                <textarea name="special_instruction" class="form-control" >
+                                <textarea name="special_instryctions" class="form-control" >
 
                                 </textarea>
-                                <span style="color:red;">{{ $errors->first('special_instruction') }}</span>
+                                <span style="color:red;">{{ $errors->first('special_instryctions') }}</span>
                             </div>
                          </div>
                         <div class="row mb-3">
@@ -119,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="file" name="option[100]attachment_image" class="form-control">
+                                            <input type="file" name="option[100][attachment_image]" class="form-control">
                                         </td>
                                         <td>
                                             <a href="" class="item_remove btn btn-danger">Remove</a>
@@ -158,6 +159,21 @@
 
 @section('script')
 <script type="text/javascript">
+
+//  servic types starts
+$('#SelectServiceTypeHideshow').on('change', function(){
+    if(this.value==3){
+        $('#showDivAmcFreeService').show().find(':input').attr('required',true);
+        $('#hideDivCategory').hide().find(':input').attr('required',false);
+        $('#hideDivSubcategory').hide().find(':input').attr('required',false);
+    }else{
+        $('#showDivAmcFreeService').hide().find(':input').attr('required',false);
+        $('#hideDivCategory').show().find(':input').attr('required',true);
+        $('#hideDivSubcategory').show().find(':input').attr('required',true);
+    }
+ })
+//  servic types ends
+
     $(document).ready(function(){
         $('#category').on('change', function(e){
             var cat_id = $(this).val();
@@ -187,7 +203,7 @@ $("body").delegate(".add_row", "click", function(e){
     e.preventDefault();
 
     html = `<tr>
-                <td><input class="form-control" required name="option[${item_row}]attachment_image" type="file"></td>
+                <td><input class="form-control" required name="option[${item_row}][attachment_image]" type="file"></td>
                 <td><a href="" class="item_remove btn btn-danger">Remove</a></td>
             </tr>`;
 

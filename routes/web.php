@@ -102,7 +102,9 @@ Route::group(['middleware'=>'admin'],function(){
 });
 Route::group(['middleware'=>'user'],function(){
     Route::get('user/dashboard', [DashboardController::class, 'user_dashboard']);
+    Route::get('user/book_service/list', [BookServiceController::class, 'book_service_list']);
     Route::get('user/book_service/add', [BookServiceController::class, 'book_service_add']);
+    Route::post('user/book_service/add', [BookServiceController::class, 'book_service_store']);
     Route::post('user/book_service/sub_category', [BookServiceController::class, 'sub_category_dropdown']);
 
 });

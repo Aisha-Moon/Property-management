@@ -12,7 +12,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('user/book_service/add') }}" @if(Request::segment(2)=='book_service') @else collapsed @endif">
+        <a class="nav-link " href="{{ url('user/book_service/list') }}" @if(Request::segment(2)=='book_service') @else collapsed @endif">
           <i class="bi bi-person"></i>
           <span>Book a Service</span>
         </a>
